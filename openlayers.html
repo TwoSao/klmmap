@@ -53,45 +53,11 @@
     <p>OpenLayers + KML</p>
 </footer>
 
+<!-- OpenLayers библиотека -->
 <script src="https://cdn.jsdelivr.net/npm/ol@10.10.0/dist/ol.js"></script>
 
-<script>
-    const map = new ol.Map({
-        target: 'map',
-
-        layers: [
-            new ol.layer.Tile({
-                source: new ol.source.OSM()
-            }),
-
-            new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    url: 'map.kml',
-                    format: new ol.format.KML()
-                })
-            })
-        ],
-
-        view: new ol.View({
-            center: ol.proj.fromLonLat([24.695, 59.407]),
-            zoom: 14
-        })
-    });
-
-
-    // Funktsioon 1 – lähenda kaart
-    function zoomIn() {
-        const view = map.getView();
-        view.setZoom(view.getZoom() + 1);
-    }
-
-
-    // Funktsioon 2 – kaugenda kaart
-    function zoomOut() {
-        const view = map.getView();
-        view.setZoom(view.getZoom() - 1);
-    }
-</script>
+<!-- JavaScript -->
+<script src="openlayers.js"></script>
 
 </body>
 </html>
