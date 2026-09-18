@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OpenLayers kaart</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/ol@10.10.0/ol.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>OpenLayers kaart</h1>
+
+    <nav>
+        <a href="index.html">Pealeht</a>
+        <a href="leaflet.html">LeafletJS</a>
+        <a href="openlayers.html">OpenLayers</a>
+        <a href="comparison.html">Võrdlus</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="info">
+        <h2>OpenLayers kaart</h2>
+
+        <p>
+            Kaardil kuvatakse KML-fail.
+        </p>
+    </div>
+
+    <div class="map-container">
+
+        <!-- Funktsioonid -->
+        <div class="map-controls">
+            <button onclick="zoomIn()">+</button>
+            <button onclick="zoomOut()">−</button>
+        </div>
+
+        <div id="map"></div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>OpenLayers + KML</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/ol@10.10.0/dist/ol.js"></script>
+
+<script>
+    const map = new ol.Map({
+        target: 'map',
+
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            }),
+
+            new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    url: 'map.kml',
+                    format: new ol.format.KML()
+                })
+            })
+        ],
+
+        view: new ol.View({
+            center: ol.proj.fromLonLat([24.695, 59.407]),
+            zoom: 14
+        })
+    });
+
+
+    // Funktsioon 1 – lähenda kaart
+    function zoomIn() {
+        const view = map.getView();
+        view.setZoom(view.getZoom() + 1);
+    }
+
+
+    // Funktsioon 2 – kaugenda kaart
+    function zoomOut() {
+        const view = map.getView();
+        view.setZoom(view.getZoom() - 1);
+    }
+</script>
+
+</body>
+</html>
