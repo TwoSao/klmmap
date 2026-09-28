@@ -116,6 +116,29 @@ nav a:hover {
     border-radius: 10px;
 }
 
+.object-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.object-card {
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+}
+
+.object-card h4 {
+    margin: 0 0 8px;
+    color: #1f2937;
+}
+
+.object-card p {
+    margin: 0;
+}
+
 footer {
     margin-top: 40px;
     background: #1f2937;
